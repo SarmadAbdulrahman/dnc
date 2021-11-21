@@ -7,6 +7,7 @@ use App\Models\Governarate;
 use App\Models\Specilaty;
 use App\Models\Procince;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $CountOfDoctors=Doctor::all()->count();
+        $doctors=DB::select('call GetAllDoctor()');
+        $InformationArray=Array(
+           "CountOfDoctors" =>$CountOfDoctors,
+            "doctors"=>$doctors
+        );
+        return view('home',$InformationArray);
     }
     
     public function CreateAccounts()

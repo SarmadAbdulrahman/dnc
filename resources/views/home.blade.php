@@ -35,9 +35,9 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3></h3>
+              <h3>00</h3>
 
-              <p>New Orders</p>
+              <p>New Booking</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -50,7 +50,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-            <h3><sup style="font-size: 20px"></sup></h3>
+            <h3><sup style="font-size: 20px"></sup>00</h3>
 
               <p>success Order</p>
             </div>
@@ -65,9 +65,9 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3></h3>
+              <h3>{{$CountOfDoctors}}</h3>
 
-              <p>Rejected</p>
+              <p>Current Doctors</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -80,9 +80,9 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3></h3>
+              <h3>00</h3>
 
-              <p>Pending Orders</p>
+              <p>Pending Doctor</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -102,7 +102,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
-                  Current New Orders
+                  Current Doctor
               </h3>
 
             </div><!-- /.card-header -->
@@ -116,28 +116,34 @@
                                 <table id="example" class="display" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>OrderStatus</th>
-                                                <th>CreatedAt</th>
-                                                <th>SecLab</th>
-                                                <th>MainLab</th>
-                                                <th>price</th>
-                                                <th>PatientCode</th>
-                                                <th>DriverMan</th>
-                                                <th>Action's</th>
+                                                <th>Doctor Name</th>
+                                                <th>Doctor Bio</th>
+                                                <th>Doctor speciality</th>
+                                                <th>Doctor governments</th>
+                                                <th>Doctor Province</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
+
+                                        @foreach($doctors as $doctor)
+                                            <tr>
+                                                <td>{{$doctor->doctor_name}}</td>
+                                                <td>{{$doctor->doctor_bio}}</td>
+                                                <td>{{$doctor->speciltyName}}</td>
+                                                <td>{{$doctor->governarateName}}</td>
+                                                <td>{{$doctor->ProvinceName}}</td>
+
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>OrderStatus</th>
-                                                <th>CreatedAt</th>
-                                                <th>SecLab</th>
-                                                <th>MainLab</th>
-                                                <th>price</th>
-                                                <th>PatientCode</th>
-                                                <th>DriverMan</th>
+                                                <th>Doctor Name</th>
+                                                <th>Doctor Bio</th>
+                                                <th>Doctor speciality</th>
+                                                <th>Doctor governments</th>
+                                                <th>Doctor Province</th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -166,53 +172,7 @@
 @section('js')
 <script>
 $(document).ready(function() {
-
-    var audio = new Audio('mixki.mp3');
     $('#example').DataTable();
-    $('body').on('click','.OrdersOnline',function(){
-            alert("# this is when i click");
-    });
-
-
-
-
- var webSocket = new WebSocket('wss://labmirsal.herokuapp.com/api/websocket_endpoint');
-
-webSocket.onerror = function(event) {
-    onError(event)
-};
-
-webSocket.onopen = function(event) {
-    onOpen(event)
-};
-
-
-webSocket.onmessage = function(event){
-
-
-   console.log(event);
-
-}
-
-
-
-
-
-function onOpen(event) {
-    audio.play();
-$('.OrdersOnline').addClass("text-danger");
-}
-
-function onError(event) {
-    alert(event.data);
-}
-
-function start() {
-    var text = "ss";
-
-    webSocket.send(text);
-    return false;
-}
 
 });
 </script>
