@@ -28,3 +28,5 @@ Auth::routes([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/CreateAccounts', [App\Http\Controllers\HomeController::class, 'CreateAccounts'])->name('Accounts');
 Route::get('/GetProvinceByGovId', [App\Http\Controllers\HomeController::class, 'GetProvinceByGovId'])->name('GetProvinceByGovId');
+
+Route::post('/StoreNewAccount', [App\Http\Controllers\HomeController::class, 'StoreNewAccount'])->name('StoreNewAccount');

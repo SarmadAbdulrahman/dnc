@@ -48,17 +48,26 @@
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content p-0">
+                                
+                                   <form method="post" action="{{url('StoreNewAccount')}}">
+                                           @csrf
                                 <!-- Morris chart - Sales -->
                                 <div class="row">
+                                    
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Doctor Name</label>
-                                            <input type="text" class="form-control" name="Doctor_Name" placeholder="Doctor Name">
+                                            <input  required type="text" class="form-control" name="Doctor_Name" placeholder="Doctor Name">
                                         </div>
                                         <!-- /.form-group -->
+                                     
+                                    
+                                        
+                                        
                                         <div class="form-group">
                                             <label>Specialty</label>
-                                            <select  name="select_Specialty" class="form-control select_Specialty" style="width: 100%;">
+                                            <select  name="select_Specialty" class="form-control select_Specialty" style="width: 100%;" required >
                                                 <option  disabled="disabled" selected="selected">choose Specialty.....</option>
                                                 @foreach($Speiclaities as $Speiclaity)
                                                 <option value="{{$Speiclaity->id}}">{{$Speiclaity->name}}</option>
@@ -71,7 +80,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Government</label>
-                                            <select  name="select_Government" class="select_Gov form-control" >
+                                            <select required name="select_Government" class="select_Gov form-control"  required>
                                                 <option  disabled="disabled" selected="selected">choose Government.....</option>
 
                                                 @foreach($Governarates as $Governarate)
@@ -82,17 +91,21 @@
                                         <!-- /.form-group -->
                                         <div class="form-group ProvinceDiv">
                                             <label>Province</label>
-                                            <select class="form-control select_Province" style="width: 100%;">
+                                            <select required name="select_Province" class="form-control select_Province" style="width: 100%;" required>
                                                 <option  disabled="disabled" selected="selected">choose Province.....</option>
 
                                             </select>
                                         </div>
+                                        
+                                       
+                                        
+                                           
                                         <!-- /.form-group -->
                                     </div>
                                     <!-- /.col -->
                                 </div>
-                                <!-- /.row -->
-
+          <button type="submit" class="btn btn-primary">Submit</button>                        <!-- /.row -->
+ </form
 
                                 <!-- /.row -->
                             </div>

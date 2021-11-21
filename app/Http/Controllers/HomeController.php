@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Governarate;
 use App\Models\Specilaty;
 use App\Models\Procince;
+use App\Models\Doctor;
 
 class HomeController extends Controller
 {
@@ -48,5 +49,20 @@ class HomeController extends Controller
         
        return response()->json(['results' =>$Provinces],200);
         
+    }
+    
+    public function StoreNewAccount(Request $Request)
+    {
+       // dd($Request);
+        
+        Doctor::create([
+             'doctor_name' =>$Request->Doctor_Name
+        , 'sp_id' =>$Request->select_Specialty
+        , 'pr_id' =>$Request->select_Province
+        , 'gov_id' =>$Request->select_Government
+        ]);
+        
+        
+        return redirect()->back();
     }
 }
